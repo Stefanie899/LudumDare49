@@ -12,7 +12,8 @@ if (mouse_check_button_pressed(mb_left && global.inDialogue) && canProgress) {
 		global.paused = false;
 		
 		if (!is_undefined(endScript)) {
-			script_execute(endScript);	
+			script_execute(endScript);
+			endScript = undefined;
 		}
 	}
 }

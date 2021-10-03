@@ -108,6 +108,13 @@ function reset() {
 	global.shipSpeed = global.maxShipSpeed;
 	global.startingDistance = 12500;
 	global.distanceRemaining = global.startingDistance;
+	
+	global.tutorialStarted = false;
+	global.tutorialFinished = false;
+
+	global.explainedLifeSupport = false;
+	global.explainedAutopilot = false;
+	global.explainedHull = false;
 
 	lifeSupportTimer = 0;
 	fireTimer = 0;
@@ -126,6 +133,15 @@ function reset() {
 	healthTickTimer = 0;
 	
 	needsCreateTutorial = true;
+	
+	instance_destroy(objFire);
+	instance_destroy(objEnemy);
+	
+	for (var j = 0; j < instance_number(objHullCrack); j++) {
+		var crackedHull = instance_find(objHullCrack, j);
+		
+		crackedHull.isActive = false;
+	}
 }
 
 reset();

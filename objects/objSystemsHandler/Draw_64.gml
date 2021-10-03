@@ -1,5 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
+if (room == rmMainMenu || room == rmDefeat || room == rmVictory) {
+	return;	
+}
+
 var drawY = 0;
 
 draw_set_halign(fa_right);

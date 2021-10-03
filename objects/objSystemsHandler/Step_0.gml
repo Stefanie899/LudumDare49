@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if (global.paused) {
+if (global.paused || room == rmMainMenu || room == rmDefeat || room == rmVictory ) {
 	return;	
 }
 
@@ -29,7 +29,7 @@ if (global.hullStrength <= 80) {
 	global.shipSpeed -= (80 - global.hullStrength) * speedStep;
 }
 
-if (global.hullStrength <= 0 || global.humanHealth <= 0) {
+if (global.hullStrength <= 0 || global.humanHealth <= 0 && room != rmMainMenu && room != rmDefeat && room != rmVictory) {
 	objDialogueHandler.startDialogueWithScript(["The hull of the ship got too damaged. UNSTABLE didn't manage to get the humans home safely."], scrDefeat);
 	global.gameStarted = false;
 }
@@ -37,7 +37,7 @@ if (global.hullStrength <= 0 || global.humanHealth <= 0) {
 if (global.isTravelling) {
 	global.distanceRemaining -= (global.shipSpeed / 60 / 60) * dt;
 	
-	if (global.distanceRemaining <= 0) {
+	if (global.distanceRemaining <= 0 && room != rmMainMenu && room != rmDefeat && room != rmVictory) {
 		objDialogueHandler.startDialogueWithScript(["The ship has safely docked at home! Looks like UNSTABLE managed to get the humans home!"], scrVictory);	
 		global.gameStarted = false;
 	}
@@ -143,4 +143,10 @@ if (healthTickTimer >= timeBetweenHealthTicks) {
 	}
 	
 	healthTickTimer = 0;
+}
+
+if (global.mouseOverInteractable) {
+	window_set_cursor(cr_handpoint);	
+} else {
+	window_set_cursor(cr_arrow);	
 }

@@ -5,6 +5,7 @@ if (room != rmShip) {
 }
 
 if (global.resetGame) {
+	global.resetGame = false;
 	reset();	
 }
 
