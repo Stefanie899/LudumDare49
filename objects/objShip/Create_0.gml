@@ -4,10 +4,10 @@
 moveSpeed = 2;
 
 function handlePlayerMovement() {
-	var key_up = keyboard_check(188);
-	var key_down = keyboard_check(ord("O"));
+	var key_up = keyboard_check(188) || keyboard_check(ord("W"));
+	var key_down = keyboard_check(ord("O")) || keyboard_check(ord("S"));
 	var key_left = keyboard_check(ord("A"));
-	var key_right = keyboard_check(ord("E"));
+	var key_right = keyboard_check(ord("E")) || keyboard_check(ord("D"));
 
 	var tempX = x;
 	var tempY = y;

@@ -37,7 +37,13 @@ function tileMeetingByBox(startX, startY, endX, endY, layer) {
 
 	for(var _x = _x1; _x <= _x2; _x++ ){
 		for(var _y = _y1; _y <= _y2; _y++) {
-			if(tile_get_index(tilemap_get(tileMap, _x, _y))) {
+			var tg = tilemap_get(tileMap, _x, _y);
+			
+			if (is_undefined(tg)) {
+				return true;	
+			}
+			
+			if(tile_get_index(tg)) {
 				return true;
 			}
 		}
